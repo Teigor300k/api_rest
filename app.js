@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 5000;
+const port = 5001;
 
 const auth  = require("./src/middlewares/auth");
 const Address = require("./src/models/Address");
@@ -54,14 +54,14 @@ app.put("/:id", async(req, res)=>{
             return res.status(400).send({message:"Dados não encontrado!"});
         }
 
-        return res.status(200).send({data:address});
+        return res.status(200).send({message:"Dados atualizado com sucessso!"});
 
      }catch(err){
         return res.status(400).send({error : err})
      }
 })
 
-app.delete("/", async(req, res)=>{
+app.delete("/:id", async(req, res)=>{
     try{
         const {id} = req.params;
         
